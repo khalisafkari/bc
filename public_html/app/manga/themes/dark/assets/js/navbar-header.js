@@ -1,0 +1,1 @@
+!function(a){a(function(){a("#header").headroom({offset:10,tolerance:{up:10,down:10},classes:{initial:"headroom",pinned:"headroom--pinned",unpinned:"headroom--unpinned"}})})}(jQuery);

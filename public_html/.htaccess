@@ -1,0 +1,77 @@
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/html "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 1 month"
+</IfModule>
+## EXPIRES CACHING ##
+
+RewriteEngine on
+RewriteRule ^(.*).html $1.php [L,PT]
+
+# UCP
+
+RewriteRule ^ucp/(.*).html ucp.php?view=$1 [L]
+RewriteRule ^ucp/(.*).php ucp.php?view=$1  [L]
+
+# ACP
+
+RewriteRule ^acp/edit_area/(.*) acp/edit_area/$1 [L,PT]
+RewriteRule ^acp/app=(.*)view=(.*) acp.php?app=$1&app_view=$2 [L,PT]
+RewriteRule ^acp/(.*).html acp.php?view=$1 [L,PT]
+RewriteRule ^acp/(.*).html?(.*) acp.php?view=$1&$2 [L,PT]
+RewriteRule ^acp/(.*).php acp.php?view=$1 [L,PT]
+
+# CP
+
+RewriteRule ^quan-ly.php app/manga/cpanel.php [L,PT]
+RewriteRule ^quan-ly/danh-sach-truyen.php app/manga/cpanel.php?cpanel=danh-sach-truyen [L,PT]
+RewriteRule ^quan-ly/danh-sach-truyen-cua-nhom.php app/manga/cpanel.php?cpanel=danh-sach-truyen-cua-nhom [L,PT]
+RewriteRule ^quan-ly/sua-truyen/(.*)/(.*).php app/manga/cpanel.php?cpanel=sua-truyen&mid=$1&manga=$2 [L,PT]
+RewriteRule ^quan-ly/sua-chuong/([\d]+)/([\w]+).php app/manga/cpanel.php?cpanel=sua-chuong&cid=$1&manga=$2 [L,PT]
+RewriteRule ^quan-ly/danh-sach-chuong/(.*).php app/manga/cpanel.php?cpanel=danh-sach-chuong&manga=$1 [L,PT]
+RewriteRule ^quan-ly/truyen-theo-doi.php app/manga/cpanel.php?cpanel=theo-doi [L,PT]
+RewriteRule ^dang-truyen.php app/manga/cpanel.php?cpanel=dang-truyen&type=manga [L,PT]
+RewriteRule ^quan-ly/thong-bao.php app/manga/cpanel.php?cpanel=thong-bao [L,PT]
+RewriteRule ^quan-ly/dang-chuong/([\w]+).php app/manga/cpanel.php?cpanel=dang-chuong&type=chapter&mslug=$1 [L,PT]
+
+# FLAT MANGA
+
+	#VN
+		RewriteRule ^danh-sach-truyen.php app/manga/list.php [L,PT]
+		RewriteRule ^search app/manga/list.php?act=search [L,PT]
+		RewriteRule ^danh-sach-truyen-the-loai-(.*).php app/manga/list.php?genre=$1 [L,PT]
+		RewriteRule ^danh-sach-truyen-nhom-dich-(.*).php app/manga/list.php?group=$1 [L,PT]
+		RewriteRule ^truyen-nghe-si-(.*).php app/manga/list.php?artist=$1 [L,PT]
+		RewriteRule ^truyen-da-hoan-thanh.php app/manga/list.php?m_status=1 [L,PT]
+		RewriteRule ^truyen-chua-hoan-thanh.php app/manga/list.php?m_status=2 [L,PT]
+		RewriteRule ^truyen-tam-ngung.php app/manga/list.php?m_status=3 [L,PT]
+		RewriteRule ^truyen-cua-xac-dinh.php app/manga/list.php?m_status=4 [L,PT]
+		RewriteRule ^truyen-tac-gia-(.*).php app/manga/list.php?author=$1 [L,PT]
+		RewriteRule ^([\d]+)/$ app/manga/manga.php?mid=$1 [L,PT]
+		RewriteRule ^([\d]+)/([\d]+)/$ app/manga/chapter.php?mid=$1&cid=$2 [L,PT]
+		RewriteRule ^([\d]+)/([\d]+)/([\d]+)/$ app/manga/chapter.php?mid=$1&cid=$2&page=$3 [L,PT]
+	
+
+	#EN
+		RewriteRule ^manga-list.php app/manga/list.php [L,PT]
+		RewriteRule ^manga-list-genre-(.*).php app/manga/list.php?genre=$1 [L,PT]
+		RewriteRule ^manga-rss.rss app/manga/rss.php [L,PT]
+		RewriteRule ^manga-author-(.*).php app/manga/list.php?author=$1 [L,PT]
+		RewriteRule ^manga-artist-(.*).php app/manga/list.php?artist=$1 [L,PT]
+		RewriteRule ^manga-completed.php app/manga/list.php?m_status=1 [L,PT]
+		RewriteRule ^manga-on-going.php app/manga/list.php?m_status=2 [L,PT]
+		RewriteRule ^manga-drop.php app/manga/list.php?m_status=3 [L,PT]
+		RewriteRule ^manga-list-trans-group-(.*).php app/manga/list.php?group=$1 [L,PT]
+		RewriteRule ^([\d]+)/$ app/manga/manga.php?mid=$1 [L,PT]
+		RewriteRule ^([\d]+)/([\d]+)/$ app/manga/chapter.php?mid=$1&cid=$2 [L,PT]
+		RewriteRule ^([\d]+)/([\d]+)/([\d]+)/$ app/manga/chapter.php?mid=$1&cid=$2&page=$3 [L,PT]

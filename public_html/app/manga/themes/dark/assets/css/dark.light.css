@@ -1,0 +1,32 @@
+.section.colorscheme-dark {
+    color: #dadada;
+    background-color: #212121;
+}
+
+.theme-toggle input[type=checkbox]:checked+label:before {
+    background-color: #fff;
+    transform: translateY(-50%)translateX(1.4em);
+}
+
+.theme-toggle label:before {
+    background-color: #ffa41b;
+}
+
+.theme-toggle label:before, #theme-toggle label:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 1.44em;
+    height: 1.44em;
+    border-radius: 50%;
+    top: 50%;
+    left: .3em;
+    transform: translateY(-50%);
+    transition: .9s ease;
+}
+
+.theme-toggle label:after {
+    background-color: #000839;
+    left: -6em;
+    transform: translateY(-50%)scale(0.00001);
+}
